@@ -20,6 +20,13 @@ class WidgetRenderer {
 	private static $markerSuffix = "END_WIDGET";
 
 	/**
+	 * Stores the compiled widgets for after the parser has run.
+	 *
+	 * @var string[]
+	 */
+	private static array $widgets = [];
+
+	/**
 	 * @param Parser &$parser
 	 * @param string $widgetName
 	 *
@@ -139,9 +146,7 @@ class WidgetRenderer {
 		$dash = strpos( $output, '"' ) !== false ? "\"'-" : '-';
 		$marker = $dash . wfRandomString( 16 );
 
-		$widgets = (array)$parser->getOutput()->getExtensionData( 'widgetReplacements' );
-		$widgets[$marker] = $output;
-		$parser->getOutput()->setExtensionData( 'widgetReplacements', $widgets );
+		self::$widgets[$marker] = $output;
 		return self::$markerPrefix . $marker . self::$markerSuffix;
 	}
 
@@ -150,8 +155,8 @@ class WidgetRenderer {
 	 * @param string &$text
 	 */
 	public static function outputCompiledWidget( $parser, &$text ) {
-		$replacements = $parser->getOutput()->getExtensionData( 'widgetReplacements' );
-		if ( !is_array( $replacements ) ) {
+		$replacements = self::$widgets;
+		if ( empty( $replacements ) ) {
 			return;
 		}
 		$text = preg_replace_callback(
