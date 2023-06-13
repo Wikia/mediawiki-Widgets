@@ -1,11 +1,7 @@
 {
 	"name": "Widgets",
 	"version": "1.4.2",
-	"author": [
-		"[https://www.sergeychernyshev.com Sergey Chernyshev]",
-		"Yaron Koren",
-		"..."
-	],
+	"author": ["[https://www.sergeychernyshev.com Sergey Chernyshev]", "Yaron Koren", "..."],
 	"url": "https://www.mediawiki.org/wiki/Extension:Widgets",
 	"descriptionmsg": "widgets-desc",
 	"license-name": "GPL-2.0-or-later",
@@ -43,11 +39,9 @@
 	],
 	"Hooks": {
 		"ParserFirstCallInit": "WidgetInitializer::initParserFunctions",
-		"ParserAfterTidy": "WidgetRenderer::outputCompiledWidget"
+		"OutputPageParserOutput": "WidgetRenderer::outputCompiledWidget"
 	},
-	"AvailableRights": [
-		"editwidgets"
-	],
+	"AvailableRights": ["editwidgets"],
 	"GroupPermissions": {
 		"*": {
 			"editwidgets": false
@@ -60,9 +54,7 @@
 		}
 	},
 	"MessagesDirs": {
-		"Widgets": [
-			"i18n"
-		]
+		"Widgets": ["i18n"]
 	},
 	"ExtensionMessagesFiles": {
 		"WidgetsMagic": "Widgets.i18n.magic.php",
