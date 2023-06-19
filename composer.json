@@ -18,6 +18,7 @@
 			"minus-x fix .",
 			"phpcbf"
 		],
-		"phpcs": "phpcs -sp --cache"
+		"phpcs": "phpcs -sp --cache",
+		"phan": "phan -d . --long-progress-bar"
 	}
 }
