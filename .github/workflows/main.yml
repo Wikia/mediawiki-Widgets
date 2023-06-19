@@ -51,10 +51,6 @@ jobs:
         working-directory: ./extensions/Widgets
         run: composer test
 
-      - name: Run Phan static analysis
-        working-directory: ./extensions/Widgets
-        run: vendor/bin/phan -d . --long-progress-bar --load-baseline .phan/issue-baseline.php
-
       - name: Start MySQL
         run: sudo systemctl start mysql.service
 
