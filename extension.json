@@ -39,7 +39,7 @@
 	],
 	"Hooks": {
 		"ParserFirstCallInit": "WidgetInitializer::initParserFunctions",
-		"OutputPageParserOutput": "WidgetRenderer::outputCompiledWidget"
+		"ParserAfterTidy": "WidgetRenderer::outputCompiledWidget"
 	},
 	"AvailableRights": ["editwidgets"],
 	"GroupPermissions": {

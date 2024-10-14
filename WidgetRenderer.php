@@ -151,10 +151,10 @@ class WidgetRenderer {
 	}
 
 	/**
-	 * @param OutputPage $out
-	 * @param ParserOutput $parserOutput
+	 * @param Parser $parser
+	 * @param string &$text
 	 */
-	public static function outputCompiledWidget( OutputPage $out, ParserOutput $parserOutput ) {
+	public static function outputCompiledWidget( $parser, &$text ) {
 		$replacements = self::$widgets;
 		if ( empty( $replacements ) ) {
 			return;
@@ -164,9 +164,7 @@ class WidgetRenderer {
 			static function ( $matches ) use ( $replacements ) {
 				return $replacements[$matches[1]];
 			},
-			$parserOutput->getText()
+			$text
 		);
-
-		$parserOutput->setText( $text );
 	}
 }
